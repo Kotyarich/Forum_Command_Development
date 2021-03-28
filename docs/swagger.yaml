@@ -1,0 +1,104 @@
+consumes:
+  - application/json
+produces:
+  - application/json
+schemes:
+  - http
+swagger: '2.0'
+info:
+  description: BMSTU Command Development Technologies 2021 project
+  title: Task Aggregator API
+  version: 1.0.0
+host: 'localhost:5000'
+paths:
+  '/api/v1/task/move':
+    put:
+      description: Перемещение задачи в другую колонку доски.
+      tags:
+        - tasks
+      summary: Перемещение задачи
+      operationId: taskMove
+      parameters:
+        - type: integer
+          format: identity
+          description: Идентификатор задачи.
+          name: id
+          in: query
+          required: true
+        - type: string
+          format: identity
+          description: Название столбца-назначения.
+          name: dst
+          in: query
+          required: true
+        - type: integer
+          format: identity
+          description: Идентификатор токена.
+          name: token_id
+          in: query
+          required: true
+      responses:
+        '200':
+          description: >-
+            Задача успешно перемещена.
+        '404':
+          description: >-
+            Задача, токен или столбец-назначение не найдены.
+          schema:
+            $ref: '#/responses/Error'
+        '409':
+          description: >-
+            Задача уже находится в указанном столбце.
+          schema:
+            $ref: '#/responses/Error'
+  '/api/v1/task/close':
+    put:
+      description: Помечает задачу как выполненую.
+      tags:
+        - tasks
+      summary: Закрытие задачи
+      operationId: taskClose
+      parameters:
+        - type: integer
+          format: identity
+          description: Идентификатор задачи.
+          name: id
+          in: query
+          required: true
+        - type: integer
+          format: identity
+          description: Идентификатор токена.
+          name: token_id
+          in: query
+          required: true
+      responses:
+        '200':
+          description: >-
+            Задача успешно закрыта.
+        '404':
+          description: >-
+            Задача или токен не найдены.
+          schema:
+            $ref: '#/responses/Error'
+        '409':
+          description: >-
+            Задача уже закрыта.
+          schema:
+            $ref: '#/responses/Error'
+responses:
+  Error:
+    description: Описание ошибки
+    schema:
+      type: object
+      properties:
+        message:
+          description: Текстовое описание ошибки.
+          type: string
+          x-go-name: Message
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: KEY
+    in: header
+security:
+  - api_key: []
