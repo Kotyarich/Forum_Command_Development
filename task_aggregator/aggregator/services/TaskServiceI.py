@@ -1,7 +1,7 @@
 import abc
 from typing import List
 
-from task_aggregator.aggregator.models import *
+from task_aggregator.aggregator.models import Token
 from task_aggregator.aggregator.services.Task import Task
 
 
