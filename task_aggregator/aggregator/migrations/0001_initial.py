@@ -19,9 +19,12 @@ class Migration(migrations.Migration):
             name='Map',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('todo', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32), size=None)),
-                ('doing', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32), size=None)),
-                ('review', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32), size=None)),
+                ('todo', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32),
+                                                                   size=None)),
+                ('doing', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32),
+                                                                    size=None)),
+                ('review', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=32),
+                                                                     size=None)),
             ],
         ),
         migrations.CreateModel(
