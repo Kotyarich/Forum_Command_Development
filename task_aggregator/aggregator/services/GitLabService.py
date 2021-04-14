@@ -6,7 +6,7 @@ from .Task import Task
 from .TaskServiceI import TaskServiceI
 
 
-class GitHubService(TaskServiceI):
+class GitLabService(TaskServiceI):
 
     def __init__(self, token: Token):
         super().__init__(token)
