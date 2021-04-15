@@ -7,19 +7,21 @@ from aggregator.services.Task import Task
 
 class TaskServiceI(abc.ABC):
 
+    def __init__(self, token: Token):
+        self.token = token
+        self.base_url = token.service.domain + '/'
+
     @abc.abstractmethod
-    def get_tasks(self, token: Token) -> List[Task]:
+    def get_tasks(self) -> List[Task]:
         """
         Returns list of assigned to user tasks.
-        :param token: user's token.
-        :return:
         """
         pass
 
     @abc.abstractmethod
-    def move_task(self, token: Token, task_id: int):
+    def move_task(self, src: str, task_id: int, repository: str):
         pass
 
     @abc.abstractmethod
-    def close_task(self, token: Token, task_id: int):
+    def close_task(self, task_id: int, repository: str):
         pass
