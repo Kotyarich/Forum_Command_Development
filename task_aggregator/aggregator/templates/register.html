@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 offset-4 block mt-5 p-4">
+                <h2 class="mb-3">Register</h2>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        Username already exists.
+                    </div>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <div class="alert alert-danger" role="alert">
+                            Your account doesn't have access to this page. To proceed, please login with an account that
+                            has access.
+                        </div>
+                    {% else %}
+                        <div class="alert alert-danger" role="alert">
+                            Please login to see this page.
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <form method="post" action="">
+                    {% csrf_token %}
+
+                    <label for="id_username">Username</label>
+                    <input type="text" name="username" id="id_username" class="form-control" required>
+
+                    <label class="mt-3" for="id_password">Password</label>
+                    <input type="password" name="password" id="id_password" class="form-control" required>
+
+                    <a class="btn btn-outline-primary mt-3" href="{% url 'login' %}" role="button">Sign in</a>
+
+                    <button type="submit" class="btn btn-primary mt-3 float-right">Sign up</button>
+
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

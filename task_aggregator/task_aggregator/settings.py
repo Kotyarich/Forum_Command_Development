@@ -129,5 +129,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    'aggregator/static',
+)
 
 SWAGGER_YAML_FILENAME = '/docs/swagger.yaml'
+
+
+# Redirects for django.contrib.auth
+
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
