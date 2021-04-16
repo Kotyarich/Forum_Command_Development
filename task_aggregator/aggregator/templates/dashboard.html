@@ -1,9 +1,138 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     Dashboard
 {% endblock %}
 
 {% block content %}
+    <div class="container">
+
+        <!-- Header -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-dark mt-5 mb-4">Dashboard</h1>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row">
+            <div class="col-12">
+                <div class="dropdown float-left">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="true">
+                        Projects
+                    </button>
+                    <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+                        <li>
+                            <label>
+                                <input type="checkbox"> TaskAggregator
+                            </label>
+                        </li>
+
+                        <li>
+                            <label>
+                                <input type="checkbox"> MyProject
+                            </label>
+                        </li>
+
+                        <li>
+                            <label>
+                                <input type="checkbox"> TestProject
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="btn-group float-right ml-3">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        By difficulty
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+
+                <div class="btn-group float-right ml-3">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        By priority
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+
+                <div class="btn-group float-right">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        By date
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="row mt-4">
+
+            <!-- TO DO -->
+            <div class="col-3">
+                <h6 class="inline-block text-dark">TO DO</h6>
+                <h7 class="text-dark float-right">1</h7>
+
+                <div class="task">
+                    <p class="task-project">TaskAggregator</p>
+                    <p class="task-title">Разработать макет веб-приложения</p>
+                    <span class="label float-l">GitHub</span>
+                    <span class="label float-l">
+                        <img class="icon-padding-bottom" src="{% static 'img/high_priority_icon.svg' %}"/>
+                    </span>
+                    <span class="label float-l">
+                        <img class="icon-padding-bottom" src="{% static 'img/time_icon.svg' %}"/>
+                        3
+                    </span>
+                    <span class="label float-l">
+                        <img class="icon-padding-bottom" src="{% static 'img/due_date_icon.svg' %}"/>
+                        Jul, 12
+                    </span>
+                    <a target="_blank" rel="noopener noreferrer" href="#">
+                        <span class="label float-r">
+                            <img class="icon-padding-bottom" src="{% static 'img/detail_icon.svg' %}"/>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- DOING -->
+            <div class="col-3">
+                <h6 class="inline-block text-dark">DOING</h6>
+                <h7 class="text-dark float-right">0</h7>
+            </div>
+
+            <!-- REVIEW -->
+            <div class="col-3">
+                <h6 class="inline-block text-dark">REVIEW</h6>
+                <h7 class="text-dark float-right">0</h7>
+            </div>
+
+            <!-- UNRECOGNIZED -->
+            <div class="col-3">
+                <h6 class="inline-block text-dark">UNRECOGNIZED</h6>
+                <h7 class="text-dark float-right">0</h7>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
