@@ -1,3 +1,7 @@
+body {
+    font-family: "Roboto", serif;
+}
+
 .block {
     background: rgba(0, 0, 0, 0.07);
     border-radius: 10px;
@@ -9,6 +13,21 @@
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.monospace {
+    font-family: "Roboto Mono", monospace;
+}
+
+.vertical-align-center-helper {
+    position: relative;
+}
+
+.vertical-align-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 

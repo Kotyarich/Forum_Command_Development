@@ -1,9 +1,196 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     Settings
 {% endblock %}
 
 {% block content %}
-    
+    <div class="container">
+
+        <!-- Header -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-dark mt-5 mb-4">Settings</h1>
+            </div>
+        </div>
+
+        <!-- API tokens -->
+        <div class="row">
+            <div class="col-12 block pt-3 pb-3 h-100">
+                <h3 class="text-dark">API tokens</h3>
+
+                <h5 class="text-dark mt-3">Add token</h5>
+
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text monospace" id="inputGroup-sizing-sm">GitHub</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="API token">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-success" type="button">Add</button>
+                    </div>
+                </div>
+                <a target="_blank" rel="noopener noreferrer"
+                   href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">
+                    <small>How do i create a GitHub token?</small></a>
+                <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text monospace" id="inputGroup-sizing-sm">GitLab</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="Domain">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="API token">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-success" type="button">Add</button>
+                    </div>
+                </div>
+                <a target="_blank" rel="noopener noreferrer"
+                   href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html"><small>How do i create a
+                    GitLab token?</small></a>
+                <div class="input-group input-group-sm mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text monospace" id="inputGroup-sizing-sm">Jira&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="Domain">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="Username">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="API token">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-success" type="button">Add</button>
+                    </div>
+                </div>
+                <a target="_blank" rel="noopener noreferrer"
+                   href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">
+                    <small>How do i create a Jira token?</small></a>
+
+                <h5 class="text-dark mt-3">Token list</h5>
+
+                <div class="block pt-3 pb-1">
+                    <p class="pr-3 pl-3">
+                        <span class="monospace">
+                            GitHub&nbsp;&nbsp;&nbsp;&nbsp;ghp_GqJH································
+                        </span>
+                        <button class="btn btn-sm btn-outline-danger float-right" type="button" data-toggle="modal"
+                                data-target="#deleteTokenModal">Delete
+                        </button>
+                    </p>
+                    <p class="pr-3 pl-3">
+                        <span class="monospace">
+                            Jira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lab.bmstu.ru&nbsp;&nbsp;&nbsp;&nbsp;Username&nbsp;&nbsp;&nbsp;&nbsp;uOPenfjl································
+                        </span>
+                        <button class="btn btn-sm btn-outline-danger float-right" type="button" data-toggle="modal"
+                                data-target="#deleteTokenModal">Delete
+                        </button>
+                    </p>
+                </div>
+                <button class="btn btn-outline-danger float-right mt-3" type="button">Delete all</button>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+
+            <!-- Column mapping -->
+            <div class="col-6 block h-100">
+                <h3 class="text-dark mt-3 vertical-align-center-helper">
+                    Column mapping&nbsp;
+                    <img class="vertical-align-center" src="{% static 'img/help_icon.svg' %}" data-toggle="tooltip"
+                         data-placement="top"
+                         title="Specify the labels that are used in your projects to sort tasks by columns"/>
+                </h3>
+
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col-4 pl-0 mt-2">
+                            <div class="form-group">
+                                <label for="ToDoLabels">To do</label>
+                                <textarea class="form-control" id="ToDoLabels" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-4 pr-2 pl-2 mt-2">
+                            <div class="form-group">
+                                <label for="DoingLabels">Doing</label>
+                                <textarea class="form-control" id="DoingLabels" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-4 pr-0 mt-2">
+                            <div class="form-group">
+                                <label for="ReviewLabels">Review</label>
+                                <textarea class="form-control" id="ReviewLabels" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 p-0">
+                            <button class="btn btn-outline-secondary" type="button">Set as default</button>
+                            <button class="btn btn-outline-primary float-right" type="button">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadline -->
+            <div class="col-2 offset-1 block h-100">
+                <h3 class="text-dark mt-3 mb-3 vertical-align-center-helper">
+                    Deadline&nbsp;
+                    <img class="vertical-align-center" src="{% static 'img/help_icon.svg' %}" data-toggle="tooltip"
+                         data-placement="top"
+                         title="Specify the time period for which you will be notified of an urgent task"/>
+                </h3>
+
+                <h5 class="text-dark mt-3">Time range</h5>
+
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Recipient's username"
+                           aria-label="Recipient's username" aria-describedby="basic-addon2" value="24">
+                    <div class="input-group-append">
+                        <span class="input-group-text monospace" id="basic-addon2">hours</span>
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary float-right mt-3 mb-3" type="button">Save</button>
+            </div>
+
+            <!-- Notifications -->
+            <div class="col-2 offset-1 block h-100">
+                <h3 class="text-dark mt-3 mb-3">Notifications</h3>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Enabled</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mt-2 mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <label class="custom-control-label" for="customCheck2">Sound</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteTokenModal" tabindex="-1" aria-labelledby="deleteTokenModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you really want to delete this token?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a role="button" class="btn btn-danger" data-dismiss="modal" href="#">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
