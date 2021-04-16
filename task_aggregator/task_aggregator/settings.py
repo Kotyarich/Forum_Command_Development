@@ -139,4 +139,4 @@ SWAGGER_YAML_FILENAME = '/docs/swagger.yaml'
 # Redirects for django.contrib.auth
 
 LOGOUT_REDIRECT_URL = 'login'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard'
