@@ -1,5 +1,0 @@
-Django
-django-swagger-render
-psycopg2
-wheel
-requests
