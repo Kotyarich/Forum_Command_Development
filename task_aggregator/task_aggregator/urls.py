@@ -18,4 +18,4 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
 ]
 
-urlpatterns += static('/../docs/', document_root='docs')
+urlpatterns += static('/static/', document_root='static')

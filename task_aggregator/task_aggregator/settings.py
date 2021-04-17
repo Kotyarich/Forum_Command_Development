@@ -133,7 +133,10 @@ STATICFILES_DIRS = (
     'aggregator/static',
 )
 
-SWAGGER_YAML_FILENAME = '/docs/swagger.yaml'
+
+# Swagger
+
+SWAGGER_YAML_FILENAME = '/static/swagger.yaml'
 
 
 # Redirects for django.contrib.auth
