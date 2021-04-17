@@ -37,10 +37,9 @@ jobs:
         python -m pip install --upgrade pip
         cd task_aggregator
         pip install -r requirements.txt
-    - name: Make migrations and migrate
+    - name: Migrate
       run: |
         cd task_aggregator
-        python manage.py makemigrations aggregator
         python manage.py migrate
     - name: Run Tests
       run: |
