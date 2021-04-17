@@ -139,7 +139,8 @@ STATICFILES_DIRS = (
 SWAGGER_YAML_FILENAME = '/static/swagger.yaml'
 
 
-# Redirects for django.contrib.auth
+# URLs for django.contrib.auth
 
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
