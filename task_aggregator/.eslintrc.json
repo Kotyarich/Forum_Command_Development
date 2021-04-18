@@ -1,6 +1,10 @@
 {
+    "plugins": [
+        "django"
+    ],
     "env": {
         "browser": true,
+        "django/i18n": true,
         "es2021": true,
         "jquery": true
     },
