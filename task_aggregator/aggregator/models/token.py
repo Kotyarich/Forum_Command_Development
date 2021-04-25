@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from .map import Map
 from .service import Service
-from .utils import make_human_readable
 
 
 class Token(models.Model):
@@ -13,4 +12,15 @@ class Token(models.Model):
     map = models.OneToOneField(Map, on_delete=models.CASCADE)
 
     def __str__(self):
-        return make_human_readable(self, ['user_id', 'service_id', 'in_service_username', 'token', 'map_id'])
+        token = self.token[:4] + '·' * (len(self.token) - 4)
+        if self.service.type == Service.Type.GITHUB:
+            return token
+
+        domain = self.service.domain
+        if self.service.type == Service.Type.GITLAB:
+            return f'{domain} {token}'
+
+        username = self.in_service_username
+        return f'{domain} {username} {token}'
+
+

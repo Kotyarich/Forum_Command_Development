@@ -1,5 +1,4 @@
 from django.db import models
-from .utils import make_human_readable
 
 
 class Service(models.Model):
@@ -14,4 +13,8 @@ class Service(models.Model):
     type = models.IntegerField(choices=Type.choices)
 
     def __str__(self):
-        return make_human_readable(self, ['domain', 'type'])
+        if self.type == self.Type.GITHUB:
+            return 'GitHub'
+        if self.type == self.Type.GITLAB:
+            return 'GitLab'
+        return 'Jira'
