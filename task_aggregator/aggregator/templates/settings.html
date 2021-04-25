@@ -149,7 +149,7 @@
 
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" placeholder="Recipient's username"
-                           aria-label="Recipient's username" aria-describedby="basic-addon2" value="24">
+                           aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ profile.deadline_range }}">
                     <div class="input-group-append">
                         <span class="input-group-text monospace" id="basic-addon2">hours</span>
                     </div>
@@ -162,12 +162,12 @@
                 <h3 class="text-dark mt-3 mb-3">Notifications</h3>
 
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" {% if profile.notifications_enabled %}checked{% endif %}>
                     <label class="custom-control-label" for="customCheck1">Enabled</label>
                 </div>
 
                 <div class="custom-control custom-checkbox mt-2 mb-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2" {% if profile.notifications_sound %}checked{% endif %}>
                     <label class="custom-control-label" for="customCheck2">Sound</label>
                 </div>
             </div>
