@@ -20,7 +20,9 @@ class Migration(migrations.Migration):
                 ('deadline_range', models.IntegerField(default=24)),
                 ('notifications_enabled', models.BooleanField(default=False)),
                 ('notifications_sound', models.BooleanField(default=False)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='user', to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE,
+                                              related_name='user',
+                                              to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

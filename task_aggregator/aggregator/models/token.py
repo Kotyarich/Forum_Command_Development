@@ -22,5 +22,3 @@ class Token(models.Model):
 
         username = self.in_service_username
         return f'{domain} {username} {token}'
-
-
