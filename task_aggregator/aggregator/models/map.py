@@ -10,5 +10,17 @@ class Map(models.Model):
     doing = ArrayField(models.CharField(max_length=KEYWORD_MAX_LEN))
     review = ArrayField(models.CharField(max_length=KEYWORD_MAX_LEN))
 
+    @property
+    def todo_text(self):
+        return '\n'.join(self.todo)
+
+    @property
+    def doing_text(self):
+        return '\n'.join(self.doing)
+
+    @property
+    def review_text(self):
+        return '\n'.join(self.review)
+
     def __str__(self):
         return make_human_readable(self, ['todo', 'doing', 'review'])

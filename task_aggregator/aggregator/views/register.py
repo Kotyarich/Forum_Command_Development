@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
+from aggregator.models import Profile
 
 
 class RegisterView(CreateView):
@@ -20,5 +21,6 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         form.instance.password = make_password(form.instance.password)
         user = form.save()
+        Profile.objects.create(user=user)
         login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
         return super().form_valid(form)
