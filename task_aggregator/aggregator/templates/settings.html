@@ -72,22 +72,19 @@
                 <h5 class="text-dark mt-3">Token list</h5>
 
                 <div class="block pt-3 pb-1">
+                    {% for token in tokens %}
                     <p class="pr-3 pl-3">
+                        <span class="monospace service-name">
+                            {{ token.service }}
+                        </span>
                         <span class="monospace">
-                            GitHub&nbsp;&nbsp;&nbsp;&nbsp;ghp_GqJH································
+                            {{ token }}
                         </span>
                         <button class="btn btn-sm btn-outline-danger float-right" type="button" data-toggle="modal"
-                                data-target="#deleteTokenModal">Delete
+                                data-target="#deleteTokenModal" data-id="{{ token.pk }}">Delete
                         </button>
                     </p>
-                    <p class="pr-3 pl-3">
-                        <span class="monospace">
-                            Jira&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lab.bmstu.ru&nbsp;&nbsp;&nbsp;&nbsp;Username&nbsp;&nbsp;&nbsp;&nbsp;uOPenfjl································
-                        </span>
-                        <button class="btn btn-sm btn-outline-danger float-right" type="button" data-toggle="modal"
-                                data-target="#deleteTokenModal">Delete
-                        </button>
-                    </p>
+                    {% endfor %}
                 </div>
                 <button class="btn btn-outline-danger float-right mt-3" type="button" data-toggle="modal"
                         data-target="#deleteAllTokensModal">Delete all
@@ -111,19 +108,22 @@
                         <div class="col-4 pl-0 mt-2">
                             <div class="form-group">
                                 <label for="ToDoLabels">To do</label>
-                                <textarea class="form-control" id="ToDoLabels" rows="2"></textarea>
+                                <textarea class="form-control" id="ToDoLabels" rows="2">{{ map.todo_text }}
+                                </textarea>
                             </div>
                         </div>
                         <div class="col-4 pr-2 pl-2 mt-2">
                             <div class="form-group">
                                 <label for="DoingLabels">Doing</label>
-                                <textarea class="form-control" id="DoingLabels" rows="2"></textarea>
+                                <textarea class="form-control" id="DoingLabels" rows="2">{{ map.doing_text }}
+                                </textarea>
                             </div>
                         </div>
                         <div class="col-4 pr-0 mt-2">
                             <div class="form-group">
                                 <label for="ReviewLabels">Review</label>
-                                <textarea class="form-control" id="ReviewLabels" rows="2"></textarea>
+                                <textarea class="form-control" id="ReviewLabels" rows="2">{{ map.review_text }}
+                                </textarea>
                             </div>
                         </div>
                     </div>

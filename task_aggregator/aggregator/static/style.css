@@ -19,6 +19,10 @@ body {
     font-family: "Roboto Mono", monospace;
 }
 
+.service-name {
+    font-weight: bolder;
+}
+
 .vertical-align-center-helper {
     position: relative;
 }
